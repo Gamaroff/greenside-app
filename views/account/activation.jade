@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+
+    include ../includes/title
+
+    div(data-bind='template: {name: \'ViewTemplate\'}')
+    script#ViewTemplate(type='text/html')
+
+        .container
+            h3
+                | Your Account has not yet been activated.
+
+            div
+                p You will receive an activation email. Follow those instructions to activate your account.
+            hr.dash
+

@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+
+    include ../includes/title
+
+    div(data-bind='template: {name: \'ViewTemplate\'}')
+    script#ViewTemplate(type='text/html')
+
+        .container
+            h3
+                Registration complete
+            small
+                | An email has been sent to you the address you registered with. Please follow the instructions
+                | to successfully log in.
+

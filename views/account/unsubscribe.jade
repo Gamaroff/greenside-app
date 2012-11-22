@@ -1,0 +1,39 @@
+extends ../layout
+
+block header
+    script(type='text/javascript')
+        require(['lib/knockout', 'viewmodels/Accounts/UnsubscribeViewModel', 'lib/domReady!'], function(ko, viewModel) {
+            ko.applyBindings(new viewModel());
+        });
+
+block content
+
+    include ../includes/title
+
+    div(data-bind='template: {name: \'ViewTemplate\'}')
+    script#ViewTemplate(type='text/html')
+
+        .container
+            h5.colored Unsubscribe from Invirohub
+            p
+                | Enter your email if you would like to unsubscribe from Invirohub
+
+        .container.inner_content
+
+            form.well
+                fieldset
+                    input(type='text', placeholder='email@email.com', data-bind='validationOptions: { insertMessages: false }, value: email, valueUpdate: \'afterkeydown\', css: {\'error\': !email.isValid()}')
+                    span.label.label-important(data-bind='visible: !email.isValid(), validationMessage: email', style='margin-left: 10px;')
+
+                .alert.alert-error(data-bind='text: errorMessage, visible: errorMessage')
+                .alert.alert-success(data-bind='text: message, visible: message')
+
+                button.btn.btn-success(data-bind="click: unsubscribe, enable: isValid, visible: !isBusy()") Unsubscribe
+                button.btn.btn-success(data-bind="enable: !isBusy(), visible: isBusy") Unsubscribing ...
+
+
+
+
+
+
+

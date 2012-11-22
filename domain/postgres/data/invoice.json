@@ -1,0 +1,161 @@
+{
+    "from"             : "1 October 2012",
+    "to"               : "31 October 2012",
+    "total"            : 1467.00,
+    "utility"          : {
+        "name"        : "Invirohub",
+        "vat"         : 12345,
+        "street"      : "88 Western Services Road, Woodmead",
+        "postal_code" : 2191,
+        "city"        : "Johannesburg",
+        "phone"       : "(011) 483123456",
+        "email"       : "billing@invirohub.com"
+    },
+    "customer"         : {
+        "name"           : "Bild It",
+        "billing_street" : "Shop 234, Mega Mall",
+        "billing_city"   : "Kriel",
+        "billing_email"  : "megamall@gmail.com"
+    },
+    "charges"          : [
+        {
+            "charge"    : "Energy",
+            "indice"    : "kw/h",
+            "frequency" : "hourly",
+            "amount"    : 1.10
+        },
+        {
+            "charge"    : "Reactive Energy",
+            "indice"    : "kva",
+            "frequency" : "monthly",
+            "amount"    : 258
+        },
+        {
+            "charge"    : "Service",
+            "indice"    : "flat",
+            "frequency" : "monthly",
+            "amount"    : 160
+        },
+        {
+            "charge"    : "Energy",
+            "indice"    : "flat",
+            "frequency" : "daily",
+            "amount"    : 40
+        }
+    ],
+    "summary_info"     : [
+        {
+            "description"       : "Total Consumption",
+            "current"           : 1300,
+            "previous"          : 1200,
+            "previous-previous" : 1200
+        },
+
+        {
+            "description"       : "Max Demand",
+            "current"           : 1300,
+            "previous"          : 1200,
+            "previous-previous" : 1200
+        },
+        {
+            "description"       : "Avg Daily Consumption",
+            "current"           : 1300,
+            "previous"          : 1200,
+            "previous-previous" : 1200
+        }
+    ],
+    "billing_info"     : {
+        "vat"       : {
+            "rate"    : "17%",
+            "amount" : 917.00
+        },
+        "bbf"       : 0.00,
+        "sub_total" : 6550.00,
+        "total"     : 7467.00,
+        "charges"   : [
+            {
+                "charge"   : "Active Energy",
+                "quantity" : 133,
+                "amount"   : 1430.00
+            },
+            {
+                "charge"   : "Reactive Energy",
+                "quantity" : 15,
+                "amount"   : 3720.00
+            },
+            {
+                "charge"   : "Service",
+                "quantity" : "monthly",
+                "amount"   : 160.00
+            },
+            {
+                "charge"   : "Administration",
+                "quantity" : "daily",
+                "amount"   : 1240.00
+            }
+        ]
+    },
+    "consumption_info" : [
+
+        {
+            "day"             : 1351814400,
+            "day_of_week"     : "monday",
+            "temp"            : 34,
+            "kwh"             : 230,
+            "max_demand"      : 18,
+            "max_demand_time" : 12.24
+        },
+        {
+            "day"             : 1351900800,
+            "day_of_week"     : "tuesday",
+            "temp"            : 34,
+            "kwh"             : 240,
+            "max_demand"      : 25,
+            "max_demand_time" : 12.24
+        },
+        {
+            "day"             : 1351987200,
+            "day_of_week"     : "monday",
+            "temp"            : 27,
+            "kwh"             : 210,
+            "max_demand"      : 20,
+            "max_demand_time" : 12.24
+        },
+        {
+            "day"             : 1352073600,
+            "day_of_week"     : "monday",
+            "temp"            : 20,
+            "kwh"             : 215,
+            "max_demand"      : 15,
+            "max_demand_time" : 12.24
+        },
+        {
+            "day"             : 1352160000,
+            "day_of_week"     : "monday",
+            "temp"            : 21,
+            "kwh"             : 235,
+            "max_demand"      : 19,
+            "max_demand_time" : 12.24
+        },
+        {
+            "day"             : 1352246400,
+            "day_of_week"     : "monday",
+            "temp"            : 24,
+            "kwh"             : 210,
+            "max_demand"      : 24,
+            "max_demand_time" : 12.24
+        },
+        {
+            "day"             : 1352332800,
+            "day_of_week"     : "monday",
+            "temp"            : 30,
+            "kwh"             : 215,
+            "max_demand"      : 20,
+            "max_demand_time" : 12.24
+        }
+    ]
+}
+
+
+
+

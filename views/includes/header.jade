@@ -1,0 +1,35 @@
+header
+    .container
+        .row
+            if currentUser != null && currentUser != ''
+                span.header_social
+                    span.badge
+                        i.icon-user.icon-white(style='margin-right: 5px; margin-bottom: 7px')
+                        a(href='/account') #{currentUser.email}
+                    |
+                    span.badge
+                        i.icon-home.icon-white(style='margin-right: 5px; margin-bottom: 5px')
+                        a(href='/console') console
+                    |
+                    span.badge
+                        i.icon-th.icon-white(style='margin-right: 5px; margin-bottom: 5px')
+                        a(href='/dashboard') dashboard
+                    |
+                    if roles.indexOf('isSuperAdministrator') >= 0
+                        span.badge
+                            i.icon-cog.icon-white(style='margin-right: 5px; margin-bottom: 5px')
+                            a(href='/settings') settings
+                        |
+                    span.badge
+                        i.icon-off.icon-white(style='margin-right: 5px; margin-bottom: 5px')
+                        a(href='/logout') sign out
+            if currentUser == null || currentUser == ''
+                span.header_social
+                    span.badge
+                        a(href='/register') sign up
+                    |
+                    span.badge
+                        a(href='/login') sign in
+
+
+            

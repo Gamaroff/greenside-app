@@ -6,8 +6,10 @@ lib-cov
 *.out
 *.pid
 *.gz
-*.idea
 .idea
+*.idea
+
+js_compiled
 
 pids
 logs

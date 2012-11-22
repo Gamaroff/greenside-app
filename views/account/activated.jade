@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+
+    include ../includes/title
+
+    div(data-bind='template: {name: \'ViewTemplate\'}')
+    script#ViewTemplate(type='text/html')
+
+        .container
+            h3
+                | Your Account has been activated
+
+            div
+                p Login to Invirohub using your credentials.
+            hr.dash
+            a(href='/login') Login to Invirohub
+

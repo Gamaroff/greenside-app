@@ -1,7 +1,48 @@
-doctype 5
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+!!! 5
+html(lang='en', ng-app='#{ngapp}')
+    head
+        meta(charset='utf8')
+        base(href='/')
+        title #{title}
+        link(rel='stylesheet', type='text/css', href='/styles/bootstrap.min.css')
+
+        script(type='text/javascript',  src='js/lib/require.js')
+        script(type='text/javascript',  src='js/global/requireConfig.js')
+  
+        script(type='text/javascript', src='js/lib/jquery-1.7.2.min.js')
+        script(type='text/javascript', src='js/lib/bootstrap.min.js')
+
+        script(type='text/javascript', src='js/lib/underscore-min.js')
+
+        script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js')
+
+        block header
+
+    body
+
+
+        .navbar
+            .navbar-inner
+                a.brand(href='#') Title
+                ul.nav
+                    li.active
+                        a(href='#') Home
+                    li
+                        a(href='#') Link
+                    li
+                        a(href='#') Link
+
+
+
+        #wrap
+            include includes/header
+
+            block content
+
+            #push
+
+        #footer
+
+            include includes/footer
+  
+ 

@@ -1,0 +1,54 @@
+extends ../layout
+
+block header
+    script(type='text/javascript')
+        require(['lib/knockout', 'viewmodels/Accounts/AccountViewModel', 'lib/domReady!'], function(ko, viewModel) {
+            ko.applyBindings(new viewModel());
+        });
+
+block content
+
+    include ../includes/title
+
+    div(data-bind='template: {name: \'ViewTemplate\'}')
+    script#ViewTemplate(type='text/html')
+
+        .container
+            .row
+                .span8
+
+                    .tabbable(style='margin-bottom: 100px;')
+                        ul.nav.nav-tabs
+                            li.active
+                                a(href='#Main1', data-toggle='tab') Personal Information
+                            li
+                                a(href='#Main2', data-toggle='tab') API Keys
+
+                        .tab-content
+                            #Main1.tab-pane.active
+                                include includes/userInfo
+                            #Main2.tab-pane
+                                include includes/apiKeys
+
+                .span4.side_bar
+                    .well
+
+                        ul(style='list-style-image: url(/img/Elements/Balls/bullet-green.png);')
+                            li
+                                h4 Help
+                        hr
+                        ul.nav.nav-pills.nav-stacked
+                            li
+                                a(href='') Creating Sites
+                            li
+                                a(href='') Creating Devices
+                            li
+                                a(href='') Assigning Tariff
+                            li
+                                a(href='') Assigning Billing Schedules
+                            li
+                                a(href='') Creating Users
+
+
+
+

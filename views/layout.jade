@@ -1,5 +1,5 @@
 !!! 5
-html(lang='en', ng-app='#{ngapp}')
+html(lang='en')
     head
         meta(charset='utf8')
         base(href='/')
@@ -16,6 +16,10 @@ html(lang='en', ng-app='#{ngapp}')
         script(type='text/javascript', src='js/lib/underscore-min.js')
 
         script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js')
+        script(type='text/javascript', src='js/lib/angular-resource.min.js')
+
+        if currentUser == null || currentUser == ''
+            script(type='text/javascript', src='js/controllers/account/registerController.js')
 
         block header
 

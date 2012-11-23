@@ -72,7 +72,7 @@ function AccountRoutes() {
 
         // check activation
 
-        userModel.get(req.body.username, function (result) {
+        userModel.get(req.body.email, function (result) {
             if (!result) {
                 res.send({err:'User does not exist'});
             }

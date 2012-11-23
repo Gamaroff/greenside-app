@@ -7,7 +7,7 @@ function HomeRoutes() {
 
     // app.get('/', homeRoutes.viewIndex);
     self.viewIndex = function (req, res) {
-        viewUtil.renderView(req, res, 'home/index', 'Home');
+        viewUtil.renderView(req, res, 'home/index', 'Home', 'home');
     };
 
 

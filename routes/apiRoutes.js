@@ -11,6 +11,8 @@ function ApiRoutes() {
 
         app.post('/api/changepassword', accountRoutes.changePassword);
 
+        app.post('/login', accountRoutes.doLogin);
+
     };
 
 }

@@ -1,3 +1,4 @@
 var IndexController = function ($scope) {
-    $scope.hello = 'hello beatches';
-} 
+    $scope.hello = 'Welcome to Scouter';
+}
+

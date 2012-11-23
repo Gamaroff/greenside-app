@@ -5,6 +5,7 @@ html(lang='en', ng-app='#{ngapp}')
         base(href='/')
         title #{title}
         link(rel='stylesheet', type='text/css', href='/styles/bootstrap.min.css')
+        link(rel='stylesheet', type='text/css', href='/styles/bootstrap-responsive.min.css')
 
         script(type='text/javascript',  src='js/lib/require.js')
         script(type='text/javascript',  src='js/global/requireConfig.js')
@@ -19,25 +20,13 @@ html(lang='en', ng-app='#{ngapp}')
         block header
 
     body
-
-
-        .navbar
-            .navbar-inner
-                a.brand(href='#') Title
-                ul.nav
-                    li.active
-                        a(href='#') Home
-                    li
-                        a(href='#') Link
-                    li
-                        a(href='#') Link
-
-
+        include includes/header
 
         #wrap
-            include includes/header
 
-            block content
+            .container
+
+                block content
 
             #push
 

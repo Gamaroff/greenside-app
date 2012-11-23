@@ -1,5 +1,6 @@
 var auth = require('../app/auth');
 var homeRoutes = require('./views/homeRoutes');
+var accountRoutes = require('./views/accountRoutes');
 
 function ViewRoutes() {
     'use strict';
@@ -9,6 +10,8 @@ function ViewRoutes() {
     self.init = function (app) {
 
         app.get('/', homeRoutes.viewIndex);
+
+        app.get('/register', accountRoutes.viewRegister);
 
     };
 

@@ -25,7 +25,7 @@ function Mailer() {
 
         // setup e-mail data with unicode symbols
         var mailOptions = {
-            from    : 'Invirohub <' + CONFIG.user + '>', // sender address
+            from    : 'Scouter <' + CONFIG.user + '>', // sender address
             to      : to, // list of receivers
             subject : subject, // Subject line
             html    : html // html body

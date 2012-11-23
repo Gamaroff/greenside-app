@@ -13,6 +13,8 @@ function ApiRoutes() {
 
         app.post('/login', accountRoutes.doLogin);
 
+        app.post('/register', accountRoutes.register);
+
     };
 
 }

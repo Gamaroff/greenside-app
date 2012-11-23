@@ -76,12 +76,6 @@ function User() {
             facebook           : obj.facebook,
             website            : obj.website,
             linkedin           : obj.linkedin,
-            bill_address_line1 : obj.bill_address_line1,
-            bill_address_line2 : obj.bill_address_line2,
-            bill_city          : obj.bill_city,
-            bill_postal_code   : obj.bill_postal_code,
-            bill_province      : obj.bill_province,
-            bill_country       : obj.bill_country,
             active             : obj.active,
             activated          : obj.activated,
             activation_code    : obj.activation_code,
@@ -158,22 +152,24 @@ function User() {
 
                 delete obj.password;
 
-                Model
-                    .create(obj)
-                    .success(function (result) {
-                        var subject = 'Welcome to Invirohub';
+                var user = buildModel(obj);
+
+                user.save(function (err, result) {
+                    if (err) {
+                        callback(err);
+                    }
+                    else {
+                        var subject = 'Welcome to Scouter';
                         var html = '<p>Hello</p>' +
                             '<p>Your registration is complete. To activate your account please go to the following link: </p>' +
-                            '<p><a href=\'http://invirohub.com/activate/' + obj.email + '/' + obj.activation_code + '\'>Activate my account</a></p>' +
+                            '<p><a href=\'http://scouter.co.za/activate/' + obj.email + '/' + obj.activation_code + '\'>Activate my account</a></p>' +
                             '<p>Your username is: ' + result.email + '</p>' +
-                            '<p>Regards,</p><p>Invirohub</p>';
+                            '<p>Regards,</p><p>Scouter</p>';
                         mailer.sendMail(result.email, subject, html);
 
                         callback(null, result);
-                    })
-                    .error(function (error) {
-                        callback(error.message);
-                    });
+                    }
+                });
 
             }
             else {

@@ -13,6 +13,10 @@ function ViewRoutes() {
 
         app.get('/register', accountRoutes.viewRegister);
 
+        app.get('/activate/:email/:id', accountRoutes.viewActivate);
+        app.get('/activated', accountRoutes.viewActivated);
+        app.get('/activation', accountRoutes.viewActivation);
+
     };
 
 }

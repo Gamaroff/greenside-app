@@ -14,14 +14,29 @@ function RegisterController($scope, $resource) {
     };
 
     $scope.register = function () {
-        $scope.twitterResult = $scope.twitter.get({q : 'monkey'});
+
+        $scope.registerResult = null;
+
+        registration.register(null, {email : $scope.email}, function (result) {
+
+            if (result.err) {
+                alert(err);
+            }
+            else {
+                $scope.email = '';
+                $scope.registerResult = 'Registration successful. Please follow the instructions sent to your mailbox.'
+                // $scope.registerResult = result.data;
+            }
+
+        }, function (result) {
+
+        });
     };
 
-    $scope.twitter = $resource('http://search.twitter.com/:action',
-        {action : 'search.json', q : 'cow', callback : 'JSON_CALLBACK'},
-        {get : {method : 'JSONP'}
-        });
+    var registration = $resource('/register',
+        {callback : 'JSON_CALLBACK'},
+        {register : {method : 'POST'}}
+    );
 
 }
 
-//RegisterController.$inject = ['$scope', '$resource'];

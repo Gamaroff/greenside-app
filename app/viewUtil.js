@@ -40,7 +40,7 @@ function ViewUtil() {
 
         if (!hasPermission) {
             res.render('home/index.jade', {
-                title:'Invirohub',
+                title:'Scouter',
                 roles:[],
                 currentUser:req.user,
                 ngapp:'',

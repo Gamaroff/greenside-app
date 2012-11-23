@@ -15,7 +15,7 @@ function AccountRoutes() {
 
     // app.get('/login', ..
     self.viewLogin = function (req, res) {
-        viewUtil.renderView(req, res, 'account/login', 'Login to Invirohub', 'account');
+        viewUtil.renderView(req, res, 'account/login', 'Login to Scouter', 'account');
     };
 
     // app.get('/activate/:email/:id', ..
@@ -27,7 +27,7 @@ function AccountRoutes() {
         }
         else {
             if (!req.params.id || !req.params.email) {
-                viewUtil.renderView(req, res, 'home/index', 'Activate Account', 'account');
+                viewUtil.renderView(req, res, 'home/index', 'Scouter', 'home');
             }
             else {
 
@@ -125,27 +125,7 @@ function AccountRoutes() {
         viewUtil.renderView(req, res, 'account/registered', 'Registered');
     };
 
-    // app.post('/register'...)
-    self.save = function (req, res) {
 
-        // fetch roles so we can add this user to the utility_user roles
-
-        roleModel.get('utility_admin', function (result) {
-
-            var newUser = {
-                email:req.body.email,
-                roles:[]
-            };
-
-            newUser.roles.push(result);
-
-            userModel.save(newUser, function (err, result) {
-                res.send({err:err, result:result});
-            });
-
-        });
-
-    };
 
     // app.post('/subscribe'...)
     self.subscribe = function (req, res) {
@@ -175,7 +155,7 @@ function AccountRoutes() {
 
     // app.get('/unsubscribe'...)
     self.viewUnsubscribeEmail = function (req, res) {
-        viewUtil.renderView(req, res, 'account/unsubscribe', 'Unsubscribe from Invirohub');
+        viewUtil.renderView(req, res, 'account/unsubscribe', 'Unsubscribe from Scouter');
     };
 
 }

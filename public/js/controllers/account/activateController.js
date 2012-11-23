@@ -3,12 +3,18 @@
  * Date: 2012/11/23
  * Time: 11:54 AM
  */
-function RegisterController($scope, $resource) {
+
+function ActivateController($scope, $resource) {
 
     $scope.isBusy = false;
 
     $scope.emailValid = function () {
         return $scope.email;
+    };
+
+    $scope.setPassword = function () {
+
+        // alert(JSON.stringify($routeParams));
     };
 
     $scope.register = function () {
@@ -37,3 +43,4 @@ function RegisterController($scope, $resource) {
     );
 
 }
+

@@ -1,5 +1,5 @@
 !!! 5
-html(lang='en')
+html(lang='en', ng-app='scouter')
     head
         meta(charset='utf8')
         base(href='/')
@@ -17,6 +17,9 @@ html(lang='en')
 
         script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js')
         script(type='text/javascript', src='js/lib/angular-resource.min.js')
+
+        script(type='text/javascript')
+            angular.module('scouter', ['ngResource']);
 
         if currentUser == null || currentUser == ''
             script(type='text/javascript', src='js/controllers/account/registerController.js')

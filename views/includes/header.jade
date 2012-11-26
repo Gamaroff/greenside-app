@@ -59,28 +59,29 @@
                                 li.divider
                                 li
                                     a(href='#') Separated link
-                    if currentUser == null || currentUser == ''
+                    else
                         li.dropdown
                             a.dropdown-toggle(href='#', data-toggle='dropdown')
                                 | Sign Up
                                 strong.caret
                             .dropdown-menu(style='padding: 15px; padding-bottom: 0px;')
-                                form(ng-controller='RegisterController')
-                                    input(ng-model='email', style='margin-bottom: 15px;', type='text', placeholder='Email', name='email')
-                                    input.btn.btn-primary.btn-block(ng-click='register()', value='Register')
-                                    .alert.alert-success(ng-show='registerResult', style='margin-top: 3px;')
-                                        span {{registerResult}}
+                                #RegisterForm
+                                    form
+                                        .control-group(data-bind='css: {\'error\': !email.isValid(), \'success\': email.isValid}')
+                                            input(type='text', placeholder='email@email.com', data-bind='validationOptions: { insertMessages: false }, value: email, valueUpdate: \'afterkeydown\'')
+                                        button.btn.btn-primary.btn-block(data-bind='click: register, enable: isValid') Register
+
                         li.dropdown
                             a.dropdown-toggle(href='#', data-toggle='dropdown')
                                 | Sign In
                                 strong.caret
                             .dropdown-menu(style='padding: 15px; padding-bottom: 0px;')
-                                form(method='post', action='login', accept-charset='UTF-8')
-                                    input(style='margin-bottom: 15px;', type='text', placeholder='Email', name='email')
-                                    input(style='margin-bottom: 15px;', type='password', placeholder='Password', name='password')
-                                    input#remember-me(style='float: left; margin-right: 10px;', type='checkbox', name='remember-me', value='1')
-                                    label(for='user_remember_me', style=' color: #aaa')  Remember me
-                                    input.btn.btn-primary.btn-block(type='submit', value='Sign In')
-                                    label(style='text-align: center; margin-top: 5px; color: #aaa') or
-                                    input.btn.btn-primary.btn-block(type='button', value='Sign In with Google')
-                                    input.btn.btn-primary.btn-block(type='button', value='Sign In with Twitter')
+                                #LoginForm
+                                    form(method='post', action='login', accept-charset='UTF-8')
+                                        .control-group(data-bind='css: {\'error\': !email.isValid(), \'success\': email.isValid}')
+                                            input(type='text', placeholder='Email', data-bind='validationOptions: { insertMessages: false }, value: email, valueUpdate: \'afterkeydown\'')
+                                        .control-group(data-bind='css: {\'error\': !password.isValid(), \'success\': password.isValid}')
+                                            input(type='text', placeholder='Password', data-bind='validationOptions: { insertMessages: false }, value: password, valueUpdate: \'afterkeydown\'')
+                                        input#remember-me(style='float: left; margin-right: 10px;', type='checkbox', name='remember-me', value='1')
+                                        label(for='user_remember_me', style=' color: #aaa')  Remember me
+                                        button.btn.btn-primary.btn-block(data-bind='enable: isValid') Sign In

@@ -1,38 +1,50 @@
 extends ../layout
 
 block header
-    script(type='text/javascript', src='js/controllers/account/activateController.js')
+
+    script(type='text/javascript')
+        require(['lib/knockout', 'viewmodels/Accounts/SetPasswordViewModel', 'lib/domReady!'], function(ko, viewModel) {
+            ko.applyBindings(new viewModel('#{email}', '#{hash}'));
+        });
 
 block content
 
-    div(ng-controller='ActivateController')
+    include ../includes/title
 
-        if (canActivate)
-            form.well
-                fieldset
+    div(data-bind='template: {name: \'ViewTemplate\'}')
+    script#ViewTemplate(type='text/html')
 
-                    label Email:
-                    h5.colored(ng-model='email')
+        .container.inner_content
 
-                    hr.dash
+            if (canActivate)
+                form.well(name='ChangePasswordForm')
+                    fieldset
 
-                    label(for='password') Password:
-                    input(type='password', placeholder='password', ng-model='password')
-                    span.label.label-important(style='margin-left: 10px;')
+                        label Email:
+                        h5.colored(data-bind='text: email')
+                        input(type='hidden', data-bind='value: email')
 
-                    label(for='confirm-password') Confirm Password:
-                    input(type='password', placeholder='confirm password', ng-model='confirmPassword')
-                    span.label.label-important(style='margin-left: 10px;')
+                        hr.dash
 
-                .alert.alert-error(ng-model='error')
-            .form-actions
-                button.btn.btn-success(ng-click='setPassword()') Set your Password
-        else
-            h3 User not activated
-            h5 You may already have activated your account.
-            div
-                p Login to Scouter using your credentials.
-            hr.dash
-            a(href='/login') Login to Scouter
+                        label(for='password') Password:
+                        input(type='password', placeholder='password', data-bind='validationOptions: { insertMessages: false }, value: password, valueUpdate: \'afterkeydown\', css: {\'error\': !password.isValid()}')
+                        span.label.label-important(data-bind='visible: !password.isValid(), validationMessage: password', style='margin-left: 10px;')
+
+                        label(for='confirm-password') Confirm Password:
+                        input(type='password', placeholder='confirm password', data-bind='validationOptions: { insertMessages: false }, value: confirmPassword, valueUpdate: \'afterkeydown\', css: {\'error\': !confirmPassword.isValid()}')
+                        span.label.label-important(data-bind='visible: !confirmPassword.isValid(), validationMessage: confirmPassword', style='margin-left: 10px;')
+
+
+                    .alert.alert-error(data-bind='text: errorMessage, visible: errorMessage')
+
+                    button.btn.btn-success(data-bind="click: setPassword, enable: isValid, visible: !isBusy()") Set your Password
+                    button.btn.btn-success(data-bind="click: setPassword, enable: !isBusy(), visible: isBusy") Changing Password...
+            else
+                h3 User not activated
+                h5 You may already have activated your account.
+                div
+                    p Login to Invirohub using your credentials.
+                hr.dash
+                a(href='/login') Login to Invirohub
 
 

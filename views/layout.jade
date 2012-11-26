@@ -9,20 +9,22 @@ html(lang='en', ng-app='scouter')
 
         script(type='text/javascript',  src='js/lib/require.js')
         script(type='text/javascript',  src='js/global/requireConfig.js')
-  
+
         script(type='text/javascript', src='js/lib/jquery-1.7.2.min.js')
         script(type='text/javascript', src='js/lib/bootstrap.min.js')
-
         script(type='text/javascript', src='js/lib/underscore-min.js')
 
-        script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js')
-        script(type='text/javascript', src='js/lib/angular-resource.min.js')
-
-        script(type='text/javascript')
-            angular.module('scouter', ['ngResource']);
-
         if currentUser == null || currentUser == ''
-            script(type='text/javascript', src='js/controllers/account/registerController.js')
+            script(type='text/javascript')
+                require(['lib/knockout',
+                            'viewmodels/account/registerViewModel',
+                            'viewmodels/account/loginViewModel',
+                            'lib/domReady!'],
+                function(ko, registerViewModel, loginViewModel) {
+                    ko.applyBindings(new registerViewModel(), document.getElementById('RegisterForm'));
+                    ko.applyBindings(new loginViewModel(), document.getElementById('LoginForm'));
+                });
+
 
         block header
 

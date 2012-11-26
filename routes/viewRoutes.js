@@ -2,6 +2,7 @@ var auth = require('../app/auth');
 var homeRoutes = require('./views/homeRoutes');
 var accountRoutes = require('./views/accountRoutes');
 var dashboardRoutes = require('./views/dashboardRoutes');
+var troopRoutes = require('./views/troopRoutes');
 
 function ViewRoutes() {
     'use strict';
@@ -12,7 +13,7 @@ function ViewRoutes() {
 
         app.get('/', homeRoutes.viewIndex);
 
-        app.get('/dashboard', dashboardRoutes.view);
+        app.get('/dashboard', auth.ensureAuthenticated, dashboardRoutes.view);
 
         app.post('/login', accountRoutes.doLogin);
         app.post('/register', accountRoutes.register);
@@ -20,7 +21,10 @@ function ViewRoutes() {
         app.get('/activate/:email/:id', accountRoutes.viewActivate);
         app.get('/activated', accountRoutes.viewActivated);
         app.get('/activation', accountRoutes.viewActivation);
-        app.post('/api/changepassword', accountRoutes.changePassword);
+        app.post('/api/changepassword', auth.ensureAuthenticated, accountRoutes.changePassword);
+
+        app.get('/troops', auth.ensureAuthenticated, troopRoutes.viewTroops);
+
     };
 
 }

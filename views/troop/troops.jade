@@ -1,0 +1,44 @@
+extends ../layout
+
+block header
+    script(type='text/javascript')
+        require(['lib/knockout', 'viewmodels/troop/troopsViewModel', 'lib/domReady!'], function(ko, viewModel) {
+            ko.applyBindings(new viewModel());
+        });
+
+
+block content
+
+    div(data-bind='template: {name: \'ViewTemplate\'}')
+    script#ViewTemplate(type='text/html')
+
+        .row
+            .span12
+                h1 Troops
+
+        .row
+            .span12
+                hr
+
+        .row
+            .span12
+                button.btn.btn-primary.pull-right Add a Troop
+
+        .row
+            .span12
+                hr
+
+
+        .row
+            .span12
+
+                table.table.table-condensed
+                    tr
+                        th Name
+                    tbody(data-bind='foreach: troops')
+                        tr
+                            td(data-bind='text: name')
+
+
+
+

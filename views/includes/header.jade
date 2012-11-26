@@ -77,11 +77,11 @@
                                 strong.caret
                             .dropdown-menu(style='padding: 15px; padding-bottom: 0px;')
                                 #LoginForm
-                                    form(method='post', action='login', accept-charset='UTF-8')
+                                    form
                                         .control-group(data-bind='css: {\'error\': !email.isValid(), \'success\': email.isValid}')
                                             input(type='text', placeholder='Email', data-bind='validationOptions: { insertMessages: false }, value: email, valueUpdate: \'afterkeydown\'')
                                         .control-group(data-bind='css: {\'error\': !password.isValid(), \'success\': password.isValid}')
-                                            input(type='text', placeholder='Password', data-bind='validationOptions: { insertMessages: false }, value: password, valueUpdate: \'afterkeydown\'')
+                                            input(type='password', placeholder='Password', data-bind='validationOptions: { insertMessages: false }, value: password, valueUpdate: \'afterkeydown\'')
                                         input#remember-me(style='float: left; margin-right: 10px;', type='checkbox', name='remember-me', value='1')
                                         label(for='user_remember_me', style=' color: #aaa')  Remember me
-                                        button.btn.btn-primary.btn-block(data-bind='enable: isValid') Sign In
+                                        button.btn.btn-primary.btn-block(data-bind='click: login, enable: isValid') Sign In

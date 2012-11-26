@@ -35,11 +35,11 @@ define(['lib/knockout', 'extenders/knockout.validation'], function (ko) {
                 email : self.email()
             };
 
-            $.post('/register', dto, function (err) {
+            $.post('/register', dto, function (result) {
+                self.isBusy(false);
 
-                if (err.err) {
-                    self.isBusy(false);
-                    self.errorMessage(err.err);
+                if (result.err) {
+                    self.errorMessage(result.err);
                 }
                 else {
                     self.email('');

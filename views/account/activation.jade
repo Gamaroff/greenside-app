@@ -1,8 +1,12 @@
 extends ../layout
 
-block content
+block header
+    script(type='text/javascript')
+        require(['lib/knockout', 'viewmodels/basicViewModel', 'lib/domReady!'], function(ko, viewModel) {
+            ko.applyBindings(new viewModel(), document.getElementById('MainContainer'));
+        });
 
-    include ../includes/title
+block content
 
     div(data-bind='template: {name: \'ViewTemplate\'}')
     script#ViewTemplate(type='text/html')

@@ -2,13 +2,11 @@ extends ../layout
 
 block header
     script(type='text/javascript')
-        require(['lib/knockout', 'viewmodels/Accounts/UnsubscribeViewModel', 'lib/domReady!'], function(ko, viewModel) {
+        require(['lib/knockout', 'viewmodels/account/unsubscribeViewModel', 'lib/domReady!'], function(ko, viewModel) {
             ko.applyBindings(new viewModel());
         });
 
 block content
-
-    include ../includes/title
 
     div(data-bind='template: {name: \'ViewTemplate\'}')
     script#ViewTemplate(type='text/html')

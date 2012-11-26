@@ -12,14 +12,6 @@ block content
     div(data-bind='template: {name: \'ViewTemplate\'}')
     script#ViewTemplate(type='text/html')
 
-        .container
-            small
-                if errorMessage
-                    .alert.alert-error
-                        | #{ errorMessage }
-
-                else
-                    .alert.alert-success
-                        | #{ message }
+        h1 Dashboard
 
 

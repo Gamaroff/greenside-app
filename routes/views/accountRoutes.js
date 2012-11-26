@@ -64,6 +64,19 @@ function AccountRoutes() {
         }
     };
 
+    // app.post('/register', accountRoutes.register);
+    self.register = function (req, res) {
+
+        var newUser = {
+            email : req.body.email
+        };
+
+        userModel.save(newUser, function (err, result) {
+            res.send({err : err, data : result});
+        });
+
+    };
+
     self.login = function (req, res) {
         res.send({result:true});
     };
@@ -72,7 +85,7 @@ function AccountRoutes() {
 
         // check activation
 
-        userModel.get(req.body.email, function (result) {
+        userModel.get(req.body.username, function (result) {
             if (!result) {
                 res.send({err:'User does not exist'});
             }
@@ -125,7 +138,13 @@ function AccountRoutes() {
         viewUtil.renderView(req, res, 'account/registered', 'Registered');
     };
 
-
+    self.changePassword = function (req, res) {
+        if (req.body) {
+            userModel.changePassword(req.body, function (err, result) {
+                res.send({err : err, data : result});
+            });
+        }
+    };
 
     // app.post('/subscribe'...)
     self.subscribe = function (req, res) {

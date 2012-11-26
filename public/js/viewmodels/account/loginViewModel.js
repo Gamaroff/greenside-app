@@ -34,18 +34,18 @@ define(['lib/knockout', 'extenders/knockout.validation'], function (ko) {
             self.errorMessage(null);
 
             var dto = {
-                email    : self.email(),
+                username    : self.email(),
                 password : self.password()
             };
 
-            $.post('/login', dto, function (err) {
-                if (err.err) {
+            $.post('/login', dto, function (result) {
+                if (result.err) {
                     self.isBusy(false);
 
-                    if (err.err === 'Activation Required')
+                    if (result.err === 'Activation Required')
                         location.href = '/activation';
                     else
-                        self.errorMessage(err.err);
+                        self.errorMessage(result.err);
                 }
                 else {
                     location.href = '/dashboard';

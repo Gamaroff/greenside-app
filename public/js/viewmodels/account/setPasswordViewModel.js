@@ -15,8 +15,8 @@ define(['lib/knockout', 'extenders/knockout.validation'], function (ko) {
 
         self.email = ko.observable(email);
 
-        self.password = ko.observable().extend({ minLength:6 }).extend({ required:true });
-        self.confirmPassword = ko.observable().extend({ required:true }).extend({ equal:{params:self.password, message:'Confirm password must match Password'} });
+        self.password = ko.observable().extend({ minLength : 6, required : true });
+        self.confirmPassword = ko.observable().extend({ required : true, equal : {params : self.password, message : 'Confirm password must match Password'} });
         self.errorMessage = ko.observable();
 
         self.isValid = ko.computed(function () {
@@ -43,9 +43,9 @@ define(['lib/knockout', 'extenders/knockout.validation'], function (ko) {
             self.errorMessage(null);
 
             var dto = {
-                email:self.email(),
-                password:self.password(),
-                hash:hash
+                email    : self.email(),
+                password : self.password(),
+                hash     : hash
             };
 
             $.post('/api/changepassword', dto, function (err) {

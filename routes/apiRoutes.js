@@ -9,11 +9,9 @@ function ApiRoutes() {
 
     self.init = function (app) {
 
-        app.post('/api/changepassword', accountRoutes.changePassword);
 
-        app.post('/login', accountRoutes.doLogin);
 
-        app.post('/register', accountRoutes.register);
+
 
     };
 

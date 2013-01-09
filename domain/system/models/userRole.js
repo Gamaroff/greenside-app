@@ -10,8 +10,8 @@ function UserRolesModel() {
     self.init = function (db, userModel, roleModel) {
 
         Model = db.define('user_role', {
-            role_id : {'type' : 'integer' },
-            user_id : {'type' : 'integer' }
+            role_id : Number,
+            user_id : Number
         });
 
         Model.hasOne("role", roleModel, { autoFetch : true });

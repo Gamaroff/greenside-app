@@ -14,37 +14,37 @@ function User() {
     self.init = function (db, roleModel) {
 
         Model = db.define('user', {
-            first_name         : { "type" : "string" },
-            last_name          : { "type" : "string" },
-            email              : { "type" : "string" },
-            salt               : { "type" : "string" },
-            hash               : { "type" : "string" },
-            created            : { "type" : "date" },
-            mobile             : { "type" : "string" },
-            phone              : { "type" : "string" },
-            fax                : { "type" : "string" },
-            address_line1      : { "type" : "string" },
-            address_line2      : { "type" : "string" },
-            city               : { "type" : "string" },
-            postal_code        : { "type" : "string" },
-            province           : { "type" : "string" },
-            country            : { "type" : "string" },
-            skype              : { "type" : "string" },
-            gtalk              : { "type" : "string" },
-            twitter            : { "type" : "string" },
-            facebook           : { "type" : "string" },
-            website            : { "type" : "string" },
-            linkedin           : { "type" : "string" },
-            bill_address_line1 : { "type" : "string" },
-            bill_address_line2 : { "type" : "string" },
-            bill_city          : { "type" : "string" },
-            bill_postal_code   : { "type" : "string" },
-            bill_province      : { "type" : "string" },
-            bill_country       : { "type" : "string" },
-            active             : { "type" : "boolean" },
-            activated          : { "type" : "boolean" },
-            activation_code    : { "type" : "string" },
-            picture            : { "type" : "data" }
+            first_name         : String,
+            last_name          : String,
+            email              : String,
+            salt               : String,
+            hash               : String,
+            created            : Date,
+            mobile             : String,
+            phone              : String,
+            fax                : String,
+            address_line1      : String,
+            address_line2      : String,
+            city               : String,
+            postal_code        : String,
+            province           : String,
+            country            : String,
+            skype              : String,
+            gtalk              : String,
+            twitter            : String,
+            facebook           : String,
+            website            : String,
+            linkedin           : String,
+            bill_address_line1 : String,
+            bill_address_line2 : String,
+            bill_city          : String,
+            bill_postal_code   : String,
+            bill_province      : String,
+            bill_country       : String,
+            active             : Boolean,
+            activated          : Boolean,
+            activation_code    : String,
+            picture            : String
         });
 
         Model.hasMany("roles", roleModel, "role", { autoFetch : true, collection : 'user_role' });
@@ -55,43 +55,43 @@ function User() {
     var buildModel = function (obj) {
 
         return new Model({
-            first_name         : obj.first_name,
-            last_name          : obj.last_name,
-            email              : obj.email,
-            salt               : obj.salt,
-            hash               : obj.hash,
-            created            : obj.created,
-            mobile             : obj.mobile,
-            phone              : obj.phone,
-            fax                : obj.fax,
-            address_line1      : obj.address_line1,
-            address_line2      : obj.address_line2,
-            city               : obj.city,
-            postal_code        : obj.postal_code,
-            province           : obj.province,
-            country            : obj.country,
-            skype              : obj.skype,
-            gtalk              : obj.gtalk,
-            twitter            : obj.twitter,
-            facebook           : obj.facebook,
-            website            : obj.website,
-            linkedin           : obj.linkedin,
-            active             : obj.active,
-            activated          : obj.activated,
-            activation_code    : obj.activation_code,
-            picture            : obj.picture
+            first_name      : obj.first_name,
+            last_name       : obj.last_name,
+            email           : obj.email,
+            salt            : obj.salt,
+            hash            : obj.hash,
+            created         : obj.created,
+            mobile          : obj.mobile,
+            phone           : obj.phone,
+            fax             : obj.fax,
+            address_line1   : obj.address_line1,
+            address_line2   : obj.address_line2,
+            city            : obj.city,
+            postal_code     : obj.postal_code,
+            province        : obj.province,
+            country         : obj.country,
+            skype           : obj.skype,
+            gtalk           : obj.gtalk,
+            twitter         : obj.twitter,
+            facebook        : obj.facebook,
+            website         : obj.website,
+            linkedin        : obj.linkedin,
+            active          : obj.active,
+            activated       : obj.activated,
+            activation_code : obj.activation_code,
+            picture         : obj.picture
         });
     };
 
     self.get = function (user, callback) {
 
-        var query = {id : [user]};
+        var query = {id : user};
 
         if (isNaN(user)) {
-            query = {email : [user.toLowerCase()]};
+            query = {email : user.toLowerCase()};
         }
 
-        Model.find(query, function (result) {
+        Model.find(query, function (err, result) {
             if (result) {
                 callback(result[0]);
             }

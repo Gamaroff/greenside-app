@@ -1,4 +1,4 @@
-var userModel = require('../../domain/postgres/models/user');
+var userModel = require('../../domain/system/models/user');
 var passport = require('passport');
 var _ = require('underscore');
 var viewUtil = require('../../app/viewUtil');

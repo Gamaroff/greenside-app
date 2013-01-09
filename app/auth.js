@@ -1,6 +1,6 @@
 // dependencies for authentication
 var passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
-var User = require('../domain/postgres/models/user');
+var User = require('../domain/system/models/user');
 
 passport.use(new LocalStrategy(function(username, password, done) {
 

@@ -8,8 +8,8 @@ function RoleModel() {
     self.init = function (db) {
 
         Model = db.define('role', {
-            'name'        : {'type' : 'string' },
-            'description' : {'type' : 'string' }
+            'name'        : String,
+            'description' : String
         });
 
         return Model;

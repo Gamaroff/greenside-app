@@ -1,6 +1,6 @@
 var auth = require('../app/auth');
 
-var accountRoutes = require('./api/accountRoutes');
+var troopRoutes = require('./api/troopRoutes');
 
 function ApiRoutes() {
     'use strict';
@@ -9,9 +9,9 @@ function ApiRoutes() {
 
     self.init = function (app) {
 
-
-
-
+        app.get('/api/troops', troopRoutes.getTroops);
+        app.get('/api/troop/:id', troopRoutes.getTroop);
+        app.post('/api/troop', troopRoutes.saveTroop);
 
     };
 

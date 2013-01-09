@@ -13,7 +13,7 @@ define(['models/troopModel'],
             var self = this;
 
             self.getTroops = function (callback) {
-                $.get('/troops', function (result) {
+                $.get('/api/troops', function (result) {
 
                     if (result.data) {
                         var mapped = $.map(result.data, function (troop) {
@@ -25,8 +25,13 @@ define(['models/troopModel'],
                         callback(null);
                     }
                 });
-            }
+            };
 
+            self.saveTroop = function (troop, callback) {
+                $.post('/api/troop', function (result) {
+                    callback(result.err, result.data);
+                });
+            };
         }
 
         return new TroopRepository();

@@ -7,7 +7,7 @@ var redisConfig = require('config').RedisWeb;
 var appConfig = require('config').App;
 var RedisStore = require('connect-redis')(express);
 var viewUtil = require('./app/viewUtil');
-var postgres = require('./domain/postgres/postgresDB');
+var systemDB = require('./domain/system/systemDB');
 
 var auth = require('./app/auth');
 
@@ -69,7 +69,7 @@ server.listen(app.get('port'), function () {
 });
 
 //Initialisation
-postgres.init();
+systemDB.init();
 
 apiRoutes.init(app);
 viewRoutes.init(app);

@@ -4,7 +4,7 @@
  * Time: 10:26 PM
  */
 
-define(['lib/knockout'], function (ko) {
+define(['lib/knockout', 'models/troopModel'], function (ko, troopModel) {
     'use strict';
 
     return function TroopsViewModel() {
@@ -14,6 +14,9 @@ define(['lib/knockout'], function (ko) {
         self.isBusy = ko.observable(false);
 
         self.troops = ko.observableArray();
+        self.troop = ko.observable(new troopModel());
+
+
 
     };
 

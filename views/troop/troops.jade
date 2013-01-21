@@ -20,9 +20,28 @@ block content
             .span12
                 hr
 
+        .row#EditTroop.collapse(data-bind='with: troop')
+            .span12
+                .well
+                    h3 Troop Details
+
+                    input(type='text', placeholder='Name', data-bind='value: name')
+                    input(type='text', placeholder='Address Line 1', data-bind='value: addressLine2')
+                    input(type='text', placeholder='Address Line 2', data-bind='value: addressLine2')
+                    input(type='text', placeholder='City', data-bind='value: city')
+                    input(type='text', placeholder='Postal Code', data-bind='value: postalCode')
+                    input(type='text', placeholder='Province', data-bind='value: province')
+                    input(type='text', placeholder='Country', data-bind='value: country')
+                    input(type='text', placeholder='Email', data-bind='value: email')
+                    input(type='text', placeholder='Phone', data-bind='value: phone')
+                    input(type='text', placeholder='Fax', data-bind='value: fax')
+
+                .form-actions
+
+
         .row
             .span12
-                button.btn.btn-primary.pull-right Add a Troop
+                button.btn.btn-primary.pull-right(data-toggle='collapse', data-target='#EditTroop', data-bind='', style='margin: 5px;') Add a Troop
 
         .row
             .span12

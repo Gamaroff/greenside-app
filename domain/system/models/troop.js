@@ -69,7 +69,7 @@ function Troop() {
 
     self.get = function (id, callback) {
 
-        Model.find({id : [id]}, function (result) {
+        Model.find({id : id}, function (result) {
             if (result) {
                 callback(result[0]);
             }

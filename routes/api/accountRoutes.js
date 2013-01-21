@@ -1,4 +1,4 @@
-var userModel = require('../../domain/postgres/models/user');
+var userModel = require('../../domain/system/models/user');
 var _ = require('underscore');
 
 function AccountRoutes() {

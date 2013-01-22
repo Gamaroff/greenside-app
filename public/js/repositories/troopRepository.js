@@ -12,7 +12,7 @@ define(['models/troopModel'],
 
             var self = this;
 
-            self.getTroops = function (callback) {
+            self.getAll = function (callback) {
                 $.get('/api/troops', function (result) {
 
                     if (result.data) {
@@ -27,9 +27,14 @@ define(['models/troopModel'],
                 });
             };
 
-            self.saveTroop = function (troop, callback) {
-                $.post('/api/troop', function (result) {
-                    callback(result.err, result.data);
+            self.save = function (troop, callback) {
+                $.post('/api/troop', troop, function (result) {
+                    if (result.data) {
+                        callback(null, new troopModel(result.data));
+                    }
+                    else {
+                        callback(null);
+                    }
                 });
             };
         }

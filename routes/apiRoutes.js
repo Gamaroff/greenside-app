@@ -9,9 +9,9 @@ function ApiRoutes() {
 
     self.init = function (app) {
 
-        app.get('/api/troops', troopRoutes.getTroops);
-        app.get('/api/troop/:id', troopRoutes.getTroop);
-        app.post('/api/troop', troopRoutes.saveTroop);
+        app.get('/api/troops', troopRoutes.getAll);
+        app.get('/api/troop/:id', troopRoutes.get);
+        app.post('/api/troop', troopRoutes.save);
 
     };
 

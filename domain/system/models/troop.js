@@ -43,39 +43,39 @@ function Troop() {
 
     var buildModel = function (obj) {
 
-        return new Model({
-            name          : obj.name,
-            email         : obj.email,
-            created       : obj.created,
-            mobile        : obj.mobile,
-            phone         : obj.phone,
-            fax           : obj.fax,
-            address_line1 : obj.address_line1,
-            address_line2 : obj.address_line2,
-            city          : obj.city,
-            postal_code   : obj.postal_code,
-            province      : obj.province,
-            country       : obj.country,
-            skype         : obj.skype,
-            gtalk         : obj.gtalk,
-            twitter       : obj.twitter,
-            facebook      : obj.facebook,
-            website       : obj.website,
-            linkedin      : obj.linkedin,
-            active        : obj.active,
-            picture       : obj.picture
-        });
+        var dto = {};
+
+        for (var property in obj) {
+            dto[property] = obj[property];
+        }
+        return new Model(dto);
     };
 
     self.get = function (id, callback) {
 
-        Model.find({id : id}, function (result) {
+        Model.get(id, function (err, result) {
             if (result) {
                 callback(result[0]);
             }
             else {
-                callback(null);
+                callback(err);
             }
+        });
+    };
+
+    self.getAll = function (callback) {
+
+        Model.find({}, function (err, result) {
+            callback(err, result);
+        });
+    };
+
+    self.save = function (obj, callback) {
+
+        var m = buildModel(obj);
+
+        m.save(function (err, result) {
+            callback(err, result);
         });
     };
 

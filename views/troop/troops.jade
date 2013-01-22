@@ -22,26 +22,53 @@ block content
 
         .row#EditTroop.collapse(data-bind='with: troop')
             .span12
-                .well
+
                     h3 Troop Details
 
-                    input(type='text', placeholder='Name', data-bind='value: name')
-                    input(type='text', placeholder='Address Line 1', data-bind='value: addressLine2')
-                    input(type='text', placeholder='Address Line 2', data-bind='value: addressLine2')
-                    input(type='text', placeholder='City', data-bind='value: city')
-                    input(type='text', placeholder='Postal Code', data-bind='value: postalCode')
-                    input(type='text', placeholder='Province', data-bind='value: province')
-                    input(type='text', placeholder='Country', data-bind='value: country')
-                    input(type='text', placeholder='Email', data-bind='value: email')
-                    input(type='text', placeholder='Phone', data-bind='value: phone')
-                    input(type='text', placeholder='Fax', data-bind='value: fax')
+                    form.form-horizontal
+                        fieldset.well
+                            .control-group
+                                label.control-label(for='inputName') Name
+                                .controls
+                                    input(type='text', placeholder='Name', data-bind='value: name')
+                                label.control-label(for='inputName') Address Line 1
+                                .controls
+                                    input(type='text', placeholder='Address Line 1', data-bind='value: addressLine1')
+                                label.control-label(for='inputName') Address Line 2
+                                .controls
+                                    input(type='text', placeholder='Address Line 2', data-bind='value: addressLine2')
+                                label.control-label(for='inputName') City
+                                .controls
+                                    input(type='text', placeholder='City', data-bind='value: city')
+                                label.control-label(for='inputName') Postal Code'
+                                .controls
+                                    input(type='text', placeholder='Postal Code', data-bind='value: postalCode')
+                                label.control-label(for='inputName') Province
+                                .controls
+                                    input(type='text', placeholder='Province', data-bind='value: province')
+                                label.control-label(for='inputName') Country
+                                .controls
+                                    input(type='text', placeholder='Country', data-bind='value: country')
+                                label.control-label(for='inputName') Email
+                                .controls
+                                    input(type='text', placeholder='Email', data-bind='value: email')
+                                label.control-label(for='inputName') Phone
+                                .controls
+                                    input(type='text', placeholder='Phone', data-bind='value: phone')
+                                label.control-label(for='inputName') Fax
+                                .controls
+                                    input(type='text', placeholder='Fax', data-bind='value: fax')
 
-                .form-actions
+
+
+                        .form-actions(style='text-align: right;')
+                            button.btn(data-toggle='collapse', data-target='#EditTroop', style='margin: 3px;') close
+                            button.btn.btn-success(data-bind='click: $parent.saveTroop', style='margin: 3px;') save
 
 
         .row
             .span12
-                button.btn.btn-primary.pull-right(data-toggle='collapse', data-target='#EditTroop', data-bind='', style='margin: 5px;') Add a Troop
+                button.btn.btn-primary.pull-right(data-toggle='collapse', data-target='#EditTroop', data-bind='click: newTroop', style='margin: 5px;') Add a Troop
 
         .row
             .span12
@@ -54,9 +81,13 @@ block content
                 table.table.table-condensed
                     tr
                         th Name
+                        th Email
+                        th Phone
                     tbody(data-bind='foreach: troops')
                         tr
                             td(data-bind='text: name')
+                            td(data-bind='text: email')
+                            td(data-bind='text: phone')
 
 
 

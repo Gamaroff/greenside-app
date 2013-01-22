@@ -6,25 +6,25 @@ function TroopRoutes() {
 
     var self = this;
 
-    // app.get('/api/troops', troopRoutes.getTroops);
-    self.getTroops = function (req, res) {
-        troopModel.getTroops(function (err, result) {
+    // app.get('/api/troops', troopRoutes.getAll);
+    self.getAll = function (req, res) {
+        troopModel.getAll(function (err, result) {
             res.json({err : err, data : result});
         })
     };
 
-    // app.get('/api/troop/:id', troopRoutes.getTroop);
-    self.getTroop = function (req, res) {
-        troopModel.getTroop(function (err, result) {
+    // app.get('/api/troop/:id', troopRoutes.get);
+    self.get = function (req, res) {
+        troopModel.get(req.params.id, function (err, result) {
             res.json({err : err, data : result});
         })
     };
 
-    // app.post('/api/troop', troopRoutes.saveTroop);
-    self.saveTroop = function (req, res) {
-        troopModel.saveTroop(function (err, result) {
+    // app.post('/api/troop', troopRoutes.save);
+    self.save = function (req, res) {
+        troopModel.save(req.body, function (err, result) {
             res.json({err : err, data : result});
-        })
+        });
     };
 
 }

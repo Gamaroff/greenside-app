@@ -54,12 +54,7 @@ function Troop() {
     self.get = function (id, callback) {
 
         Model.get(id, function (err, result) {
-            if (result) {
-                callback(result[0]);
-            }
-            else {
-                callback(err);
-            }
+            callback(err, result);
         });
     };
 

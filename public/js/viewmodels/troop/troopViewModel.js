@@ -4,17 +4,31 @@
  * Time: 10:26 PM
  */
 
-define(['lib/knockout', 'models/troopModel'],
-    function (ko, troopModel) {
+define(['lib/knockout', 'repositories/troopRepository'],
+    function (ko, troopRepo) {
         'use strict';
 
-        return function TroopViewModel() {
+        return function TroopViewModel(id) {
 
             var self = this;
 
             self.isBusy = ko.observable(false);
 
             self.troop = ko.observable();
+
+            var loadTroop = function () {
+                self.isBusy(true);
+
+                troopRepo.get(id, function (err, result) {
+                    self.isBusy(false);
+
+                    if (result) {
+                        self.troop(result);
+                    }
+                });
+            };
+
+            loadTroop();
 
         };
 

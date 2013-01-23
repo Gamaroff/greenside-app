@@ -11,6 +11,11 @@ function TroopRoutes() {
         viewUtil.renderView(req, res, 'troop/troops', 'Troops', 'troop');
     };
 
+    // app.get('/troop/:id', troopRoutes.viewTroop);
+    self.viewTroop = function (req, res) {
+        viewUtil.renderView(req, res, 'troop/troop', 'Troops', 'troop', {id : req.params.id});
+    };
+
 }
 
 module.exports = new TroopRoutes();

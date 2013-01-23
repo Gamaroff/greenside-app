@@ -24,6 +24,7 @@ function ViewRoutes() {
         app.post('/api/changepassword', auth.ensureAuthenticated, accountRoutes.changePassword);
 
         app.get('/troops', auth.ensureAuthenticated, troopRoutes.viewTroops);
+        app.get('/troop/:id', auth.ensureAuthenticated, troopRoutes.viewTroop);
 
     };
 

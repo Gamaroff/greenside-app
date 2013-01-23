@@ -1,0 +1,30 @@
+extends ../layout
+
+block header
+    script(type='text/javascript')
+        require(['lib/knockout', 'viewmodels/troop/troopViewModel', 'lib/domReady!'], function(ko, viewModel) {
+            ko.applyBindings(new viewModel(#{id}));
+        });
+
+
+block content
+
+    div(data-bind='template: {name: \'ViewTemplate\'}')
+    script#ViewTemplate(type='text/html')
+
+        .row
+            .span4(data-bind='with: troop')
+                .well
+                    span(data-bind='text: name')
+                    hr
+                    span(data-bind='text: addressLine1')
+
+
+
+            .span8
+
+
+
+
+
+

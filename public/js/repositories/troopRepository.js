@@ -37,6 +37,17 @@ define(['models/troopModel'],
                     }
                 });
             };
+
+            self.get = function (id, callback) {
+                $.get('/api/troop/' + id, function (result) {
+                    if (result.data) {
+                        callback(null, new troopModel(result.data));
+                    }
+                    else {
+                        callback(result.err);
+                    }
+                });
+            };
         }
 
         return new TroopRepository();
